@@ -1,0 +1,59 @@
+<%- include('./partials/header')%>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<a class="btn btn-primary" href="/new-blog">Create New Post</a>
+			</div>
+		</div>
+		<div class="table-head">
+			<div class="row">
+				<div class="col">
+					<h2>Title</h2>
+				</div>
+				<div class="col">
+					<h2>Date Posted</h2>
+				</div>
+				<div class="col">
+					<h2>Time Posted</h2>
+				</div>
+				<div class="col">
+					<h2>Author</h2>
+				</div>
+				<div class="col">
+					<h2>Edit/Delete</h2>
+				</div>
+			</div>
+		</div>
+
+		<%blogs.forEach(function(blog){%>
+			<div class="table-body-row">
+				<div class="row">
+					<div class="col">
+						<h4><%=blog.title%></h4>
+					</div>
+					<div class="col">
+						<h4><%=blog.date.toLocaleDateString()%></h4>
+					</div>
+					<div class="col">
+						<h4><%=blog.date.toLocaleTimeString()%></h4>
+					</div>
+					<div class="col">
+						<h4><%=blog.author%></h4>
+					</div>
+					<div class="col">
+						<a class="btn btn-warning" href="blog/<%=blog._id%>/edit">
+							<i class="fas fa-edit"></i>
+						</a>
+						<form style="display: inline;" action="blog/<%=blog._id%>/?_method=DELETE" method='POST'>
+							<button class="btn btn-danger">
+								<i class="fas fa-trash">  </i>
+							</button>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+		<%});%>
+	</div>
+	
+<%- include('./partials/footer')%>

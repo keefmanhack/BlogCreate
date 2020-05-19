@@ -1,0 +1,9 @@
+.table-body-row .col{
+	border: 1px solid black;
+	background: lightgreen;
+}
+
+.table-head .col{
+	border: 1px solid black;
+	background: lightgrey;
+}

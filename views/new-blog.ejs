@@ -12,7 +12,7 @@
 		<div class="form-group">
 			<div class="row">
 				<div class="col">
-					<input placeholder="Title Image URL" class="form-control" type="text" name="title-image-url">
+					<input placeholder="Title Image URL" class="form-control" type="text" name="title_image_url">
 				</div>
 				<div class="col">
 					<input placeholder="Author" class="form-control" type="text" name="author">
@@ -22,7 +22,7 @@
 		<div class="form-group">
 			<div class="row">
 				<div class="col">
-					<textarea placeholder="Title Description" class="form-control" name="title-description"></textarea>
+					<textarea placeholder="Title Description" class="form-control" name="title_description"></textarea>
 				</div>
 			</div>
 		</div>
@@ -40,21 +40,21 @@
 				<div class="form-group">
 					<div class="row">
 						<div class="col">
-							<input placeholder="Subheading" class="form-control" type="text" name="sub-heading">
+							<input placeholder="Subheading" class="form-control" type="text" name="subData[sub_heading]">
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="row">
 						<div class="col">
-							<textarea class="form-control" placeholder="Blog Text" name="blog-text"></textarea>
+							<textarea class="form-control" placeholder="Blog Text" name="subData[blog_text]"></textarea>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="row">
 						<div class="col">
-							<input class="form-control" placeholder="Image URL" class="form-control" type="text" name="normal-image-url">
+							<input class="form-control" placeholder="Image URL" class="form-control" type="text" name="subData[normal_image_url]">
 						</div>
 						<div class="col">
 							<label for="center-justify">Center Justify</label>
@@ -73,7 +73,7 @@
 				<div class="form-group">
 					<div class="row">
 						<div class="col">
-							<input placeholder="Image Caption" class="form-control" type="text" name="normal-image-caption">
+							<input placeholder="Image Caption" class="form-control" type="text" name="subData[normal_image_caption]">
 						</div>
 					</div>
 				</div>
@@ -92,5 +92,5 @@
 	</form>
 </div>
 
-<script type="text/javascript" src='scripts/new-blog.js'></script>
+<script type="text/javascript" src='/scripts/new-blog.js'></script>
 <%- include('./partials/footer')%>
