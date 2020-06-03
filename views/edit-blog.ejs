@@ -29,7 +29,7 @@
 		
 		
 		<div class="content-series">
-			<%for(var i =0; i < blog.subData.sub_heading.length; i++){%>
+			<%for(var i =0; i < blog.subData.length; i++){%>
 				<div class="content-elements">
 					<div class="form-group">
 						<div class="row">
@@ -41,55 +41,80 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col">
-								<input placeholder="Subheading" class="form-control" type="text" name="subData[sub_heading]" value="<%=blog.subData.sub_heading[i]%>">
+								<input placeholder="Subheading" class="form-control" type="text" value="<%=blog.subData[i].sub_heading%>" name="subData[<%=i%>][sub_heading]">
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="row">
 							<div class="col">
-								<textarea class="form-control" placeholder="Blog Text" name="subData[blog_text]"><%=blog.subData.blog_text[i]%></textarea>
+								<textarea class="form-control" placeholder="Blog Text" name="subData[<%=i%>][blog_text]"><%=blog.subData[i].blog_text%></textarea>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="row">
-							<div class="col">
-								<input class="form-control" placeholder="Image URL" class="form-control" type="text" name="subData[normal_image_url]" value="<%=blog.subData.normal_image_url[i]%>">
+							<div class="col-lg-2">
+								<button class="btn btn-primary add-image-block" onclick="showImageBlock(this)" type='button'>Add Image</button>
 							</div>
-							<div class="col">
-								<label for="center-justify">Center Justify</label>
-								<%if(blog.subData.justify[i] === 'center-justify'){%>
-									<input class="form-control" id="center-justify" type="radio" name="group1" checked>
-								<%}else{%>
-									<input class="form-control" id="center-justify" type="radio" name="group1">
-								<%}%>
-							</div>
-							<div class="col">
-								<label for="float-left">Float Left</label>
-								<%if(blog.subData.justify[i] === 'float-left'){%>
-									<input class="form-control" id="float-left" type="radio" name="group1" checked>
-								<%}else{%>
-									<input class="form-control" id="float-left" type="radio" name="group1">
-								<%}%>
-							</div>
-							<div class="col">
-								<label for="float-right">Float Right</label>
-								<%if(blog.subData.justify[i] === 'float-right'){%>
-									<input class="form-control" id="float-right" type="radio" name="group1" checked>
-								<%}else{%>
-									<input class="form-control" id="float-right" type="radio" name="group1">
-								<%}%>
+							<div class="col-lg-2">
+								<button class="btn btn-primary" onclick="showCodeBlock(this)" type='button'>Add Code Block</button>
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
-						<div class="row">
-							<div class="col">
-								<input placeholder="Image Caption" class="form-control" type="text" name="subData[normal_image_caption]" value="<%=blog.subData.normal_image_caption[i]%>">
+					<%if( blog.subData[i] && blog.subData[i].normal_image_url){%>
+						<div class="image-block" style="display: block;">
+							<div class="form-group">
+								<div class="row">
+									<div class="col">
+										<input class="form-control" placeholder="Image URL" class="form-control" type="text" value="<%=blog.subData[i].normal_image_url%>" name="subData[<%=i%>][normal_image_url]">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col">
+										<input placeholder="Image Caption" class="form-control" type="text" value="<%=blog.subData[i].normal_image_caption%>" name="subData[<%=i%>][normal_image_caption]">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-lg-2">
+										<button class="btn btn-warning" onclick="cancelImageBlock(this)" type='button'>Cancel</button>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
+					<%}%>
+					<%if( blog.subData[i] && blog.subData[i].code){%>
+						<div class="code-block" style="display: block;">
+							<div class="form-group">
+								<div class="row">
+									<div class="col-lg-10">
+										<textarea class="form-control" placeholder="Code" name="subData[<%=i%>][code]"><%=blog.subData[i].code%></textarea>
+									</div>
+									<div class="col-lg-2">
+										<select name='subData[<%=i%>][language]'>
+											<option><%=blog.subData[i].language%></option>
+											<option>JS</option>
+											<option>HTML</option>
+											<option>CSS</option>
+											<option>VHDL</option>
+											<option>C</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-lg-2">
+										<button class="btn btn-warning" onclick="cancelCodeBlock(this)" type='button'>Cancel</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					<%}%>
 				</div>
 			<%}%>
 		</div>

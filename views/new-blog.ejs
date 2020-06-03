@@ -1,7 +1,7 @@
 <%- include('./partials/header')%>
 
 <div class="container">
-	<form action="/new-blog" method="POST">
+	<form onsubmit="removeUnused();" action="/new-blog" method="POST">
 		<div class=form-group>
 			<div class="row">
 				<div class="col">
@@ -40,40 +40,72 @@
 				<div class="form-group">
 					<div class="row">
 						<div class="col">
-							<input placeholder="Subheading" class="form-control" type="text" name="subData[sub_heading]">
+							<input placeholder="Subheading" class="form-control" type="text" name="subData[1][sub_heading]">
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="row">
 						<div class="col">
-							<textarea class="form-control" placeholder="Blog Text" name="subData[blog_text]"></textarea>
+							<textarea class="form-control" placeholder="Blog Text" name="subData[1][blog_text]"></textarea>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<div class="col">
-							<input class="form-control" placeholder="Image URL" class="form-control" type="text" name="subData[normal_image_url]">
+						<div class="col-lg-2">
+							<button class="btn btn-primary add-image-block" onclick="showImageBlock(this)" type='button'>Add Image</button>
 						</div>
-						<div class="col">
-							<label for="center-justify">Center Justify</label>
-							<input class="form-control" id="center-justify" type="radio" name="group1" checked>
-						</div>
-						<div class="col">
-							<label for="float-left">Float Left</label>
-							<input class="form-control" type="radio" name="group1" id="float-left">
-						</div>
-						<div class="col">
-							<label for="float-right">Float Right</label>
-							<input class="form-control" type="radio" name="group1" id="float-right">
+						<div class="col-lg-2">
+							<button class="btn btn-primary" onclick="showCodeBlock(this)" type='button'>Add Code Block</button>
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
-					<div class="row">
-						<div class="col">
-							<input placeholder="Image Caption" class="form-control" type="text" name="subData[normal_image_caption]">
+				<div class="image-block">
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								<input class="form-control" placeholder="Image URL" class="form-control" type="text" name="subData[1][normal_image_url]">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								<input placeholder="Image Caption" class="form-control" type="text" name="subData[1][normal_image_caption]">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-lg-2">
+								<button class="btn btn-warning" onclick="cancelImageBlock(this)" type='button'>Cancel</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="code-block">
+					<div class="form-group">
+						<div class="row">
+							<div class="col-lg-10">
+								<textarea class="form-control"  placeholder="Code" name="subData[1][code]"></textarea>
+							</div>
+							<div class="col-lg-2">
+								<select name='subData[1][language]'>
+									<option>JS</option>
+									<option>HTML</option>
+									<option>CSS</option>
+									<option>VHDL</option>
+									<option>C</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-lg-2">
+								<button class="btn btn-warning" onclick="cancelCodeBlock(this)" type='button'>Cancel</button>
+							</div>
 						</div>
 					</div>
 				</div>

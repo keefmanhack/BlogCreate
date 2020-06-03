@@ -3,3 +3,19 @@
 	padding: 5px;
 	margin-bottom: 10px;
 }
+
+.image-block{
+	display: none;
+}
+
+.image-block.show{
+	display: block;
+}
+
+.code-block{
+	display: none;
+}
+
+.code-block.show{
+	display: block;
+}

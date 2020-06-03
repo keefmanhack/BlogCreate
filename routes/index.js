@@ -20,21 +20,7 @@ router.get('/new-blog', function(req, res){
 
 router.post('/new-blog', function(req, res){
 
-	var newPost = {
-		title: req.body.title,
-		title_image_url: req.body.title_image_url,
-		author: req.body.author,
-		title_description: req.body.title_description,
-		subData: {
-			sub_heading: req.body.subData.sub_heading,
-			blog_text: req.body.subData.blog_text,
-			normal_image_url: req.body.subData.normal_image_url,
-			normal_image_caption: req.body.subData.normal_image_caption,
-			justify: parseJustify(req.body.subData.justify)
-		}
-	}
-
-	Blog.create(newPost, function(err, newBlog){
+	Blog.create(req.body, function(err, newBlog){
 		if(err){
 			console.log(err);
 		}else{
@@ -48,6 +34,7 @@ router.get('/blog/:id/edit', function(req, res){
 		if(err){
 			console.log(err);
 		}else{
+			console.log(foundBlog)
 			res.render('edit-blog', {blog: foundBlog});
 		}
 	})
@@ -55,22 +42,9 @@ router.get('/blog/:id/edit', function(req, res){
 })
 
 router.put('/blog/:id', function(req, res){
+	console.log(req.body);
 
-	var updatedPost = {
-		title: req.body.title,
-		title_image_url: req.body.title_image_url,
-		author: req.body.author,
-		title_description: req.body.title_description,
-		subData: {
-			sub_heading: req.body.subData.sub_heading,
-			blog_text: req.body.subData.blog_text,
-			normal_image_url: req.body.subData.normal_image_url,
-			normal_image_caption: req.body.subData.normal_image_caption,
-			justify: parseJustify(req.body.subData.justify)
-		}
-	}
-
-	Blog.findByIdAndUpdate(req.params.id, updatedPost, function(err, foundBlog){
+	Blog.findByIdAndUpdate(req.params.id, req.body, function(err, foundBlog){
 		if(err){
 			console.log(err);
 		}else{
@@ -97,6 +71,13 @@ function parseJustify(justify){
 		});
 	}
 	return output;
+}
+
+function createSubData(subData){
+	console.log(subData);
+	// for(var i =0; i <subData.sub_heading.length; i++){
+
+	// }
 }
 
 module.exports = router;

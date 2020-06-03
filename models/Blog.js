@@ -6,13 +6,14 @@ var blogSchema = new mongoose.Schema({
 	date: {type: Date, default: Date.now()},
 	author: {type: String, default: 'Keefer Gregoire'},
 	title_description: String,
-	subData: {
-		sub_heading: Array,
-		blog_text: Array,
-		normal_image_url: Array,
-		normal_image_caption: Array,
-		justify: Array
-	}
+	subData: [{
+		sub_heading: String,
+		blog_text: String,
+		normal_image_url: String,
+		normal_image_caption: String,
+		code: String,
+		language: String
+	}]
 });
 
 module.exports = mongoose.model("Blog", blogSchema);
