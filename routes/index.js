@@ -42,7 +42,6 @@ router.get('/blog/:id/edit', function(req, res){
 })
 
 router.put('/blog/:id', function(req, res){
-	console.log(req.body);
 
 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err, foundBlog){
 		if(err){

@@ -4,7 +4,10 @@ var express 		= require('express'),
 	mongoose		= require('mongoose'),
 	methodOverride	= require('method-override');
 
+
 var indexRoutes = require('./routes/index');
+
+require('dotenv').config();
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
